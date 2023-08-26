@@ -1,5 +1,8 @@
 import { Category } from '../../model/Category'
-import { ICategoriesRepository } from './ICategoriesRepository'
+import {
+  ICategoriesRepository,
+  ICreateCategoryDTO,
+} from './ICategoriesRepository'
 
 export default class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[]
@@ -17,8 +20,11 @@ export default class CategoriesRepository implements ICategoriesRepository {
     return CategoriesRepository.INSTANCE
   }
 
-  create(category: Category): void {
+  create({ name, description }: ICreateCategoryDTO): Category {
+    const category = new Category({ name, description, createdAt: new Date() })
     this.categories.push(category)
+
+    return category
   }
 
   list(): Category[] {

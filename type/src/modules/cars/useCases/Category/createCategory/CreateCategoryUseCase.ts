@@ -19,13 +19,7 @@ export class CreateCategoryUseCase {
       throw new Error('Esta categoria já existe!')
     }
 
-    const newCategory = new Category({
-      name,
-      description,
-      createdAt: new Date(),
-    })
-
-    this.categoriesRepository.create(newCategory)
+    const newCategory = this.categoriesRepository.create({ name, description })
 
     return newCategory
   }

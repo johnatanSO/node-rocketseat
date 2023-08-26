@@ -4,7 +4,7 @@ export class Category {
   _id?: string
   name: string
   description: string
-  createdAt: Date
+  createdAt?: Date
 
   constructor(category: Category) {
     if (!this._id) {
