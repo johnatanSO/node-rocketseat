@@ -1,5 +1,4 @@
 version: "3.7"
-
 services:
   app: 
     build: .
@@ -7,4 +6,17 @@ services:
     ports:
       - 3333:3333
     volumes:
-      - .:/usr/app
+      - ./:/var/www/application/
+    working_dir: "/var/www/application/"
+    command: "npm start"
+  postgres:
+    image: postgres:9.5
+    container_name: "postgres"
+    volumes:
+      - ./postgres:/var/lib/postgres
+    environment:
+      - POSTGRES_DB=your_db
+      - POSTGRES_USER=john
+      - POSTGRES_PASSWORD=123
+    ports:
+      - "5432:5432"
