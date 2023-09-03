@@ -1,7 +1,7 @@
 import { ICategoriesRepository } from '../../../repositories/Categories/ICategoriesRepository'
 import fs from 'fs'
 import { parse } from 'csv-parse'
-import { Category } from '../../../model/Category'
+import { Category } from '../../../entities/Category'
 
 interface IImportCategory {
   name: string
@@ -14,7 +14,7 @@ export class ImportCategoryUseCase {
     this.categoriesRepository = categoriesRepository
   }
 
-  loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
+  async loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
     return new Promise((resolve, reject) => {
       const stream = fs.createReadStream(file.path)
       const categories: IImportCategory[] = []
@@ -45,16 +45,17 @@ export class ImportCategoryUseCase {
   async execute(file: Express.Multer.File): Promise<Category[]> {
     const categories = await this.loadCategories(file)
 
-    const newCategories = categories.map((category) => {
+    const newCategoriesPromise = categories.map(async (category) => {
       const { name, description } = category
-      const categoryAlreadyExist = this.categoriesRepository.findByName(name)
+      const categoryAlreadyExist =
+        await this.categoriesRepository.findByName(name)
 
       if (!categoryAlreadyExist) {
-        return this.categoriesRepository.create({ name, description })
+        return await this.categoriesRepository.create({ name, description })
       }
       return undefined
     })
 
-    return newCategories
+    return await Promise.all(newCategoriesPromise)
   }
 }

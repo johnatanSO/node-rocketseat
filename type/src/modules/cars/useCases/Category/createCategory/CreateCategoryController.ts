@@ -7,10 +7,10 @@ export class CreateCategoryController {
     this.createCategoryUseCase = createCategoryUseCase
   }
 
-  handle(req: Request, res: Response): Response {
+  async handle(req: Request, res: Response): Promise<Response> {
     const { name, description } = req.body
     try {
-      const createdCategory = this.createCategoryUseCase.execute({
+      const createdCategory = await this.createCategoryUseCase.execute({
         name,
         description,
       })

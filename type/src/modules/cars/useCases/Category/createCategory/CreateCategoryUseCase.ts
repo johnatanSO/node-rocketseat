@@ -1,10 +1,6 @@
-import { Category } from '../../../model/Category'
+import { ICreateCategoryDTO } from './../../../repositories/Categories/ICategoriesRepository'
+import { Category } from '../../../entities/Category'
 import { ICategoriesRepository } from '../../../repositories/Categories/ICategoriesRepository'
-
-interface IRequest {
-  name: string
-  description: string
-}
 
 export class CreateCategoryUseCase {
   categoriesRepository: ICategoriesRepository
@@ -12,14 +8,18 @@ export class CreateCategoryUseCase {
     this.categoriesRepository = categoriesRepository
   }
 
-  execute({ name, description }: IRequest): Category {
-    const categoryAlreadyExists = !!this.categoriesRepository.findByName(name)
+  async execute({ name, description }: ICreateCategoryDTO): Promise<Category> {
+    const categoryAlreadyExists =
+      !!(await this.categoriesRepository.findByName(name))
 
     if (categoryAlreadyExists) {
       throw new Error('Esta categoria já existe!')
     }
 
-    const newCategory = this.categoriesRepository.create({ name, description })
+    const newCategory = await this.categoriesRepository.create({
+      name,
+      description,
+    })
 
     return newCategory
   }

@@ -1,4 +1,4 @@
-import { ICreateSpecificationDTO } from './../repositories/Specifitacions/ISpecificationsRepository'
+import { ICreateSpecificationDTO } from '../repositories/Specifitacions/ISpecificationsRepository'
 import { v4 as uuidV4 } from 'uuid'
 
 export class Specification {
