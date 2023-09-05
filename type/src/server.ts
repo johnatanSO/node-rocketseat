@@ -1,10 +1,19 @@
-import express from 'express'
+import 'reflect-metadata'
+import express, { Express } from 'express'
 import { router } from './routes'
-import './database'
+import cors from 'cors'
+import dbConnection from '../src/database'
+import './shared/container'
 
-const app = express()
+interface CustomExpress extends Express {
+  mongo?: any
+}
+
+const app: CustomExpress = express()
+app.mongo = dbConnection
 
 app.use(express.json())
+app.use(cors())
 app.use(router)
 
 app.listen(3333, () => {

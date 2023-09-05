@@ -7,9 +7,9 @@ export class ListSpecificationsController {
     this.listSpecificationsUseCase = listSpecificationsUseCase
   }
 
-  handle(req: Request, res: Response): Response {
+  async handle(req: Request, res: Response): Promise<Response> {
     try {
-      const specifications = this.listSpecificationsUseCase.execute()
+      const specifications = await this.listSpecificationsUseCase.execute()
 
       return res.status(200).json(specifications)
     } catch (err) {
