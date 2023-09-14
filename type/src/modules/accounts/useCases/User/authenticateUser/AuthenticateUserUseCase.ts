@@ -27,7 +27,7 @@ export class AuthenticateUserUseCase {
     const user = await this.usersRepository.findByEmail(email)
     if (!user) throw new Error('E-mail ou senha incorretos')
 
-    const passwordMatch = compare(password, user.password)
+    const passwordMatch = await compare(password, user.password)
     if (!passwordMatch) throw new Error('E-mail ou senha incorretos')
 
     const token = sign({}, 'b266fd9110e2a1a83398105a8d6cec43', {
@@ -35,6 +35,12 @@ export class AuthenticateUserUseCase {
       expiresIn: '1d',
     })
 
-    return { user, token }
+    return {
+      token,
+      user: {
+        name: user.name,
+        email: user.email,
+      },
+    }
   }
 }
