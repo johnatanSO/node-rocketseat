@@ -8,15 +8,16 @@ export class AuthenticateUserController {
       const { email, password } = req.body
 
       const authenticateUserUseCate = container.resolve(AuthenticateUserUseCase)
-      const { user, token } = await authenticateUserUseCate.execute({
+      const authenticatedUser = await authenticateUserUseCate.execute({
         email,
         password,
       })
+
       return res.status(200).json({
         success: true,
         title: 'Usuário autenticado com sucesso',
-        user,
-        token,
+        user: authenticatedUser.user,
+        token: authenticatedUser.token,
       })
     } catch (err) {
       return res.status(400).json({
