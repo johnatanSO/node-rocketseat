@@ -8,6 +8,7 @@ export interface IUser {
   driverLicense: string
   isAdmin: boolean
   createdAt: Date
+  avatar: string
 }
 
 const UserSchema = new mongoose.Schema({
@@ -17,6 +18,7 @@ const UserSchema = new mongoose.Schema({
   driverLicense: { type: String, default: null },
   isAdmin: { type: Boolean, default: false },
   createdAt: { type: Date, default: new Date() },
+  avatar: { type: String, default: null },
 })
 
 export const UserModel = mongoose.model<IUser>('User', UserSchema)

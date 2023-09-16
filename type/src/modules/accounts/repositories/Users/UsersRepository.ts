@@ -35,4 +35,8 @@ export class UsersRepository implements IUsersRepository {
     const user = await this.model.findOne({ _id })
     return user
   }
+
+  async update(filters: any, updateFields: any): Promise<void> {
+    await this.model.updateMany(filters, updateFields)
+  }
 }
