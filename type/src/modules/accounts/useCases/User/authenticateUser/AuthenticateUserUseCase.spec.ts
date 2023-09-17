@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { AppError } from '../../../../../errors/AppError'
+import { AppError } from '../../../../../shared/errors/AppError'
 import { ICreateUserDTO } from '../../../repositories/Users/IUsersRepository'
 import { MockUsersRepository } from '../../../repositories/Users/MockUsersRepository'
 import { CreateNewUserUseCase } from '../createNewUser/CreateNewUserUseCase'

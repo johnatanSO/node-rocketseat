@@ -1,7 +1,7 @@
-import { UsersRepository } from './../modules/accounts/repositories/Users/UsersRepository'
+import { UsersRepository } from '../../../../modules/accounts/repositories/Users/UsersRepository'
 import { NextFunction, Request, Response } from 'express'
 import { verify } from 'jsonwebtoken'
-import { AppError } from '../errors/AppError'
+import { AppError } from '../../../errors/AppError'
 
 export async function ensureAuthenticated(
   req: Request,

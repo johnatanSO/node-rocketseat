@@ -1,4 +1,4 @@
-import { Specification, SpecificationModel } from '../../entities/Specification'
+import { Specification, SpecificationModel } from '../../infra/mongoose/entities/Specification'
 import {
   ISpecificationRepository,
   ICreateSpecificationDTO,

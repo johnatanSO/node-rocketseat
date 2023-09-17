@@ -1,4 +1,4 @@
-import { CategoryModel, Category } from '../../entities/Category'
+import { CategoryModel, Category } from '../../infra/mongoose/entities/Category'
 
 import {
   ICategoriesRepository,

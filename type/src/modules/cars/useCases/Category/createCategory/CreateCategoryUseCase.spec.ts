@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { AppError } from '../../../../../errors/AppError'
+import { AppError } from '../../../../../shared/errors/AppError'
 import { MockCategoriesRepository } from '../../../repositories/Categories/MockCategoriesRepository'
 import { CreateCategoryUseCase } from './CreateCategoryUseCase'
 
@@ -23,12 +23,12 @@ describe('Create category ', () => {
 
   it('should not be able to create a new category with name exists', async () => {
     expect(async () => {
-      const newCategory = await createCategoryUseCase.execute({
+      await createCategoryUseCase.execute({
         name: 'Teste jest',
         description: 'Categoria com o mesmo nome',
       })
 
-      const secondNewCategory = await createCategoryUseCase.execute({
+      await createCategoryUseCase.execute({
         name: 'Teste jest',
         description: 'Categoria com o mesmo nome',
       })

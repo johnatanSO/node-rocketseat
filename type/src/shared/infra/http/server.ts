@@ -3,9 +3,9 @@ import express, { Express, NextFunction, Request, Response } from 'express'
 import 'express-async-errors'
 import { router } from './routes'
 import cors from 'cors'
-import dbConnection from '../src/database'
-import './shared/container'
-import { AppError } from './errors/AppError'
+import dbConnection from '../mongodb'
+import '../../container'
+import { AppError } from '../../errors/AppError'
 
 interface CustomExpress extends Express {
   mongo?: any

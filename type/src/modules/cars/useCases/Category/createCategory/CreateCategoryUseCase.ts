@@ -1,8 +1,8 @@
 import { ICreateCategoryDTO } from './../../../repositories/Categories/ICategoriesRepository'
-import { Category } from '../../../entities/Category'
+import { Category } from '../../../infra/mongoose/entities/Category'
 import { ICategoriesRepository } from '../../../repositories/Categories/ICategoriesRepository'
 import { inject, injectable } from 'tsyringe'
-import { AppError } from '../../../../../errors/AppError'
+import { AppError } from '../../../../../shared/errors/AppError'
 
 @injectable()
 export class CreateCategoryUseCase {

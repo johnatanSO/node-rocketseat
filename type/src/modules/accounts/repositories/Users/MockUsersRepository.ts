@@ -1,4 +1,4 @@
-import { IUser } from '../../entities/User'
+import { IUser } from '../../infra/mongoose/entities/User'
 import { ICreateUserDTO, IUsersRepository } from './IUsersRepository'
 
 export class MockUsersRepository implements IUsersRepository {

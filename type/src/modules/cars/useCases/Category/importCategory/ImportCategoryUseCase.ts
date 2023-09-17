@@ -1,7 +1,7 @@
 import { ICategoriesRepository } from '../../../repositories/Categories/ICategoriesRepository'
 import fs from 'fs'
 import { parse } from 'csv-parse'
-import { Category } from '../../../entities/Category'
+import { Category } from '../../../infra/mongoose/entities/Category'
 
 interface IImportCategory {
   name: string

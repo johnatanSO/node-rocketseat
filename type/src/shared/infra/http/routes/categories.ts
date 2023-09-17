@@ -1,7 +1,7 @@
-import { CreateCategoryController } from './../modules/cars/useCases/Category/createCategory/CreateCategoryController'
-import { importCategoryController } from './../modules/cars/useCases/Category/importCategory/index'
+import { CreateCategoryController } from '../../../../modules/cars/useCases/Category/createCategory/CreateCategoryController'
+import { importCategoryController } from '../../../../modules/cars/useCases/Category/importCategory/index'
 import { Router } from 'express'
-import { listCategoriesController } from '../modules/cars/useCases/Category/listCategories'
+import { listCategoriesController } from '../../../../modules/cars/useCases/Category/listCategories'
 import multer from 'multer'
 import { ensureAuthenticated } from '../middlewares/ensureAuthenticated'
 const upload = multer({

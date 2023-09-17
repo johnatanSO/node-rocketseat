@@ -1,11 +1,11 @@
 import { inject, injectable } from 'tsyringe'
-import { IUser } from '../../../entities/User'
+import { IUser } from '../../../infra/mongoose/entities/User'
 import {
   ICreateUserDTO,
   IUsersRepository,
 } from '../../../repositories/Users/IUsersRepository'
 import { hash } from 'bcrypt'
-import { AppError } from '../../../../../errors/AppError'
+import { AppError } from '../../../../../shared/errors/AppError'
 
 @injectable()
 export class CreateNewUserUseCase {

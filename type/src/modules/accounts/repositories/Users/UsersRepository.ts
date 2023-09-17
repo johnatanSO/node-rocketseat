@@ -1,5 +1,5 @@
 import { Model } from 'mongoose'
-import { IUser, UserModel } from '../../entities/User'
+import { IUser, UserModel } from '../../infra/mongoose/entities/User'
 import { ICreateUserDTO, IUsersRepository } from './IUsersRepository'
 
 export class UsersRepository implements IUsersRepository {
