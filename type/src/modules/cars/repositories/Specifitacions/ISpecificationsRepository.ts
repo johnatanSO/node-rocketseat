@@ -8,5 +8,5 @@ export interface ICreateSpecificationDTO {
 export interface ISpecificationRepository {
   create({ name, description }: ICreateSpecificationDTO): Promise<Specification>
   list(): Promise<Specification[]>
-  findByName(name: string): Promise<Specification | null>
+  findByName(name: string): Promise<Specification>
 }

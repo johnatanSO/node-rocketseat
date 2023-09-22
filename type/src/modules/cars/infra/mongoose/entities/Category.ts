@@ -10,7 +10,7 @@ export interface Category {
 const CategorySchema = new mongoose.Schema({
   name: { type: String, default: null },
   description: { type: String, default: null },
-  createdAt: { type: Date, default: new Date() },
+  createdAt: { type: Date, default: Date.now },
 })
 
 export const CategoryModel = mongoose.model('Category', CategorySchema)

@@ -13,4 +13,5 @@ export interface ICreateNewCarDTO {
 
 export interface ICarsRepository {
   create: (newCarData: ICreateNewCarDTO) => Promise<Car>
+  findByLicensePlate: (licensePlate: string) => Promise<Car>
 }

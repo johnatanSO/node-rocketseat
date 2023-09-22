@@ -20,7 +20,7 @@ export default class CategoriesRepository implements ICategoriesRepository {
     return await CategoryModel.find({})
   }
 
-  async findByName(name: string): Promise<Category | null> {
+  async findByName(name: string): Promise<Category> {
     const category = await CategoryModel.findOne({
       name,
     })

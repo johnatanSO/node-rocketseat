@@ -1,3 +1,4 @@
+import { AppError } from './../../../../../shared/errors/AppError'
 import { Types } from 'mongoose'
 import { inject, injectable } from 'tsyringe'
 import { Car } from '../../../infra/mongoose/entities/Car'
@@ -16,7 +17,7 @@ interface IRequest {
 @injectable()
 export class CreateCarUseCase {
   carsRepository: ICarsRepository
-  constructor(@inject('CarsReposistory') carsRepository: ICarsRepository) {
+  constructor(@inject('CarsRepository') carsRepository: ICarsRepository) {
     this.carsRepository = carsRepository
   }
 
@@ -29,6 +30,11 @@ export class CreateCarUseCase {
     brand,
     categoryId,
   }: IRequest): Promise<Car> {
+    const carAlreadyExists =
+      await this.carsRepository.findByLicensePlate(licensePlate)
+
+    if (carAlreadyExists) throw new AppError('Placa de carro já cadastrada')
+
     const newCar = await this.carsRepository.create({
       name,
       description,

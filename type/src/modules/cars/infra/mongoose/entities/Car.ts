@@ -22,7 +22,7 @@ const CarSchema = new mongoose.Schema({
   fineAmount: { type: Number, default: null },
   brand: { type: String, default: null },
   categoryId: { type: 'ObjectId', ref: 'Category', default: null },
-  createdAt: { type: Date, default: new Date() },
+  createdAt: { type: Date, default: Date.now },
 })
 
-export const CarModel = mongoose.model('Car', CarSchema)
+export const CarModel = mongoose.model<Car>('Car', CarSchema)

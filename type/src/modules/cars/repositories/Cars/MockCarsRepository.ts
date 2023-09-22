@@ -31,4 +31,8 @@ export class MockCarsRepository implements ICarsRepository {
 
     return newCar
   }
+
+  async findByLicensePlate(licensePlate: string): Promise<Car> {
+    return this.cars.find((car) => car.licensePlate === licensePlate)
+  }
 }
