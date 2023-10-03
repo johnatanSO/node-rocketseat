@@ -31,4 +31,19 @@ export class CarsRepository implements ICarsRepository {
   async findByLicensePlate(licensePlate: string): Promise<Car> {
     return await this.model.findOne({ licensePlate })
   }
+
+  async listAvaliable(
+    categoryId?: string,
+    brand?: string,
+    name?: string,
+  ): Promise<Car[]> {
+    const cars = await this.model.find({
+      avaliable: true,
+      ...(brand ? { brand } : {}),
+      ...(categoryId ? { categoryId } : {}),
+      ...(name ? { name } : {}),
+    })
+
+    return cars
+  }
 }

@@ -14,4 +14,9 @@ export interface ICreateNewCarDTO {
 export interface ICarsRepository {
   create: (newCarData: ICreateNewCarDTO) => Promise<Car>
   findByLicensePlate: (licensePlate: string) => Promise<Car>
+  listAvaliable: (
+    categoryId?: string,
+    brand?: string,
+    name?: string,
+  ) => Promise<Car[]>
 }
