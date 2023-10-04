@@ -3,11 +3,11 @@ import {
   SpecificationModel,
 } from '../../infra/mongoose/entities/Specification'
 import {
-  ISpecificationRepository,
+  ISpecificationsRepository,
   ICreateSpecificationDTO,
 } from './ISpecificationsRepository'
 
-export class SpecificationsRepository implements ISpecificationRepository {
+export class SpecificationsRepository implements ISpecificationsRepository {
   async create({
     name,
     description,

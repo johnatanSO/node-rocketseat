@@ -5,7 +5,7 @@ import { CarsRepository } from '../../modules/cars/repositories/Cars/CarsReposit
 import { ICarsRepository } from '../../modules/cars/repositories/Cars/ICarsRepository'
 import CategoriesRepository from '../../modules/cars/repositories/Categories/CategoriesRepository'
 import { ICategoriesRepository } from '../../modules/cars/repositories/Categories/ICategoriesRepository'
-import { ISpecificationRepository } from '../../modules/cars/repositories/Specifitacions/ISpecificationsRepository'
+import { ISpecificationsRepository } from '../../modules/cars/repositories/Specifitacions/ISpecificationsRepository'
 import { SpecificationsRepository } from '../../modules/cars/repositories/Specifitacions/SpecificationsRepository'
 
 container.registerSingleton<ICategoriesRepository>(
@@ -13,7 +13,7 @@ container.registerSingleton<ICategoriesRepository>(
   CategoriesRepository,
 )
 
-container.registerSingleton<ISpecificationRepository>(
+container.registerSingleton<ISpecificationsRepository>(
   'SpecificationsRepository',
   SpecificationsRepository,
 )

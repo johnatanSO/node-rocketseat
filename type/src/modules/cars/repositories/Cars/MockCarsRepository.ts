@@ -13,6 +13,7 @@ export class MockCarsRepository implements ICarsRepository {
     fineAmount,
     brand,
     categoryId,
+    specifications,
   }: ICreateNewCarDTO): Promise<Car> {
     const newCar = {
       name,
@@ -25,6 +26,7 @@ export class MockCarsRepository implements ICarsRepository {
       _id: new Types.ObjectId(),
       createdAt: new Date(),
       avaliable: true,
+      specifications: specifications || null,
     }
 
     this.cars.push(newCar)
@@ -52,5 +54,9 @@ export class MockCarsRepository implements ICarsRepository {
       }
       return null
     })
+  }
+
+  async findById(carId: string): Promise<Car> {
+    return this.cars.find((car) => car._id.toString() === carId)
   }
 }

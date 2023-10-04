@@ -13,4 +13,7 @@ const CategorySchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 })
 
-export const CategoryModel = mongoose.model('Category', CategorySchema)
+export const CategoryModel = mongoose.model<Category>(
+  'Category',
+  CategorySchema,
+)

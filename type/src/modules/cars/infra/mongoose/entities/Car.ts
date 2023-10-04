@@ -1,7 +1,7 @@
 import mongoose, { Types } from 'mongoose'
 
 export interface Car {
-  _id: Types.ObjectId | string
+  _id: Types.ObjectId
   name: string
   description: string
   dailyRate: number
@@ -9,8 +9,9 @@ export interface Car {
   licensePlate: string
   fineAmount: number
   brand: string
-  categoryId: Types.ObjectId | string
+  categoryId: Types.ObjectId
   createdAt: Date
+  specifications: Types.ObjectId[]
 }
 
 const CarSchema = new mongoose.Schema({
@@ -23,6 +24,7 @@ const CarSchema = new mongoose.Schema({
   brand: { type: String, default: null },
   categoryId: { type: 'ObjectId', ref: 'Category', default: null },
   createdAt: { type: Date, default: Date.now },
+  specifications: [{ type: 'ObjectId', ref: 'Specification', default: null }],
 })
 
 export const CarModel = mongoose.model<Car>('Car', CarSchema)
